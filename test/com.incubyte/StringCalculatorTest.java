@@ -28,4 +28,10 @@ public class StringCalculatorTest {
         StringCalculator calculator = new StringCalculator();
         Assertions.assertEquals(10, calculator.Add("1,2,3,4"));
     }
+
+    @Test
+    void newLineDelimiterAllowed() {
+        StringCalculator calculator = new StringCalculator();
+        Assertions.assertEquals(6, calculator.Add("1\n2,3"));
+    }
 }
