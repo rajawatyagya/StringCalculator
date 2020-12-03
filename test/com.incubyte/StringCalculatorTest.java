@@ -1,3 +1,5 @@
+package com.incubyte;
+
 import com.incubyte.StringCalculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
