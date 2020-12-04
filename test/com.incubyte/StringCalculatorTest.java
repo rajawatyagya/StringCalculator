@@ -45,13 +45,13 @@ public class StringCalculatorTest {
     void negativeNumberNotAllowed() {
         StringCalculator calculator = new StringCalculator();
         Throwable thrown =  Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.Add("-1,2\n3"));
-        Assertions.assertEquals("negatives not allowed, passed -1", thrown.getMessage());
+        Assertions.assertEquals("negatives not allowed, passed [-1]", thrown.getMessage());
     }
 
     @Test
     void multipleNegativeNumber() {
         StringCalculator calculator = new StringCalculator();
         Throwable thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.Add("-2,-3\n4"));
-        Assertions.assertEquals("negatives not allowed, passed [-2,-3]", thrown.getMessage());
+        Assertions.assertEquals("negatives not allowed, passed [-2, -3]", thrown.getMessage());
     }
 }

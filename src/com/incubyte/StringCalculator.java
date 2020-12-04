@@ -1,6 +1,8 @@
 package com.incubyte;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class StringCalculator {
     public int Add(String number) {
@@ -22,12 +24,17 @@ public class StringCalculator {
                 } else return Integer.parseInt(num_s[0]);
             } else {
                 int[] num_arr = new int[num_s.length];
+                List<Integer> negatives = new ArrayList<>();
                 for (int x=0; x< num_s.length; x++){
                     if (Integer.parseInt(num_s[x]) < 0){
-                        throw new IllegalArgumentException("negatives not allowed, passed " + Integer.parseInt(num_s[x]));
+                        negatives.add(Integer.parseInt(num_s[x]));
                     } else num_arr[x] = Integer.parseInt(num_s[x]);
                 }
-                return Arrays.stream(num_arr).sum();
+                if (negatives.isEmpty()) {
+                    return Arrays.stream(num_arr).sum();
+                } else {
+                    throw new IllegalArgumentException("negatives not allowed, passed " + negatives.toString());
+                }
             }
         }
     }
