@@ -54,4 +54,14 @@ public class StringCalculatorTest {
         Throwable thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.Add("-2,-3\n4"));
         Assertions.assertEquals("negatives not allowed, passed [-2, -3]", thrown.getMessage());
     }
+
+    @Test
+    void getCalledCountForAdd() {
+        StringCalculator calculator = new StringCalculator();
+        calculator.Add("");
+        calculator.Add("1");
+        calculator.Add("1,2");
+        calculator.Add("1,2,4");
+        Assertions.assertEquals(4, calculator.GetCalledCount());
+    }
 }
