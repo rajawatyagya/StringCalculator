@@ -21,16 +21,26 @@ public class StringCalculator {
             }
             String[] num_s = number.split("[" + def_delimiter + "\n]");
             if (num_s.length == 1) {
-                if (Integer.parseInt(num_s[0]) < 0){
-                    throw new IllegalArgumentException("negatives not allowed, passed " + Integer.parseInt(num_s[0]));
-                } else return Integer.parseInt(num_s[0]);
+                int parsed_int = Integer.parseInt(num_s[0]);
+                if ( parsed_int < 0){
+                    throw new IllegalArgumentException("negatives not allowed, passed " + parsed_int);
+                } else {
+                    if (parsed_int > 1000) {
+                        return 0;
+                    } else return parsed_int;
+                }
             } else {
                 int[] num_arr = new int[num_s.length];
                 List<Integer> negatives = new ArrayList<>();
                 for (int x=0; x< num_s.length; x++){
+                    int parsed_int = Integer.parseInt(num_s[x]);
                     if (Integer.parseInt(num_s[x]) < 0){
-                        negatives.add(Integer.parseInt(num_s[x]));
-                    } else num_arr[x] = Integer.parseInt(num_s[x]);
+                        negatives.add(parsed_int);
+                    } else {
+                        if (parsed_int > 1000){
+                            num_arr[x] = 0;
+                        } else num_arr[x] = parsed_int;
+                    }
                 }
                 if (negatives.isEmpty()) {
                     return Arrays.stream(num_arr).sum();
