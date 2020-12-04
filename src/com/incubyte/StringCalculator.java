@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class StringCalculator {
+    private int addCount = 0;
     public int Add(String number) {
+        addCount++;
         if (number.equals("")) {
             return 0;
         } else {
@@ -40,6 +42,6 @@ public class StringCalculator {
     }
 
     public int GetCalledCount() {
-        return 0;
+        return addCount;
     }
 }
