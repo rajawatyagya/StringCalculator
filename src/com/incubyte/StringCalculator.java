@@ -38,4 +38,8 @@ public class StringCalculator {
             }
         }
     }
+
+    public int GetCalledCount() {
+        return 0;
+    }
 }
