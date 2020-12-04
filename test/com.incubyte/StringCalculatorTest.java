@@ -45,6 +45,6 @@ public class StringCalculatorTest {
     void negativeNumberNotAllowed() {
         StringCalculator calculator = new StringCalculator();
         Throwable thrown =  Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.Add("-1,2\n3"));
-        Assertions.assertEquals("negatives not allowed", thrown.getMessage());
+        Assertions.assertEquals("negatives not allowed, passed -1", thrown.getMessage());
     }
 }
