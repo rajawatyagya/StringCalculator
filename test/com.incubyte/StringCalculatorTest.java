@@ -64,4 +64,10 @@ public class StringCalculatorTest {
         calculator.Add("1,2,4");
         Assertions.assertEquals(4, calculator.GetCalledCount());
     }
+
+    @Test
+    void numberBiggerThanThousand() {
+        StringCalculator calculator = new StringCalculator();
+        Assertions.assertEquals(3, calculator.Add("3,1001"));
+    }
 }
