@@ -40,4 +40,11 @@ public class StringCalculatorTest {
         StringCalculator calculator = new StringCalculator();
         Assertions.assertEquals(6, calculator.Add("//;\n1;2\n3"));
     }
+
+    @Test
+    void negativeNumberNotAllowed() {
+        StringCalculator calculator = new StringCalculator();
+        Throwable thrown =  Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.Add("-1,2\n3"));
+        Assertions.assertEquals("negatives not allowed", thrown.getMessage());
+    }
 }
