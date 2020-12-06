@@ -13,7 +13,7 @@ public class StringCalculator {
             return 0;
         } else {
             String def_delimiter;
-            if (number.charAt(0) != '/'){
+            if (!number.startsWith("//")){
                 def_delimiter = ",";
             } else {
                 String[] delim_arr = number.split("\n", 2);
