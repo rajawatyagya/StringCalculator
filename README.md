@@ -1,5 +1,5 @@
-#Assignment
-#####Completion Checklist
+# Assignment
+##### Completion Checklist
 
 - [x] Task 1
 - [x] Task 2
