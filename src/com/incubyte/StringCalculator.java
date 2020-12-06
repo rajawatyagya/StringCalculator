@@ -3,6 +3,7 @@ package com.incubyte;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.PatternSyntaxException;
 
 public class StringCalculator {
     private int addCount = 0;
@@ -20,13 +21,15 @@ public class StringCalculator {
                 String[] multi_delim = delim_arr[0].split("]\\[");
                 def_delimiter = String.join("|", multi_delim);
                 def_delimiter = def_delimiter.replaceAll("\\[(.*?)\\]", "$1");
+                def_delimiter = def_delimiter.replace("$", "n"); // $ is end on line in regex. Special case.
                 number = delim_arr[1];
+                number = number.replace("$", "n");
             }
             String[] num_s;
             try {
                 num_s = number.split(def_delimiter + "|\n");
-            } catch (Exception PatternSyntaxException) {
-                char to_replace = def_delimiter.charAt(0);
+            } catch (PatternSyntaxException e) {
+                char to_replace = def_delimiter.charAt(e.getIndex());
                 def_delimiter = def_delimiter.replace(to_replace, 'o');
                 number = number.replace(to_replace, 'o');
                 num_s = number.split(def_delimiter + "|\n");
