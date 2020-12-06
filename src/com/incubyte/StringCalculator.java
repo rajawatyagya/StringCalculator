@@ -11,15 +11,24 @@ public class StringCalculator {
         if (number.equals("")) {
             return 0;
         } else {
-            char def_delimiter;
+            String def_delimiter;
             if (number.charAt(0) != '/'){
-                def_delimiter = ',';
+                def_delimiter = ",";
             } else {
                 String[] delim_arr = number.split("\n", 2);
-                def_delimiter = delim_arr[0].charAt(delim_arr[0].length()-1);
+                delim_arr[0] = delim_arr[0].replace("//","");
+                def_delimiter = delim_arr[0].replaceAll("\\[(.*?)\\]", "$1");
                 number = delim_arr[1];
             }
-            String[] num_s = number.split("[" + def_delimiter + "\n]");
+            String[] num_s;
+            try {
+                num_s = number.split(def_delimiter + "|\n");
+            } catch (Exception PatternSyntaxException) {
+                char to_replace = def_delimiter.charAt(0);
+                def_delimiter = def_delimiter.replace(to_replace, 'o');
+                number = number.replace(to_replace, 'o');
+                num_s = number.split(def_delimiter + "|\n");
+            }
             if (num_s.length == 1) {
                 int parsed_int = Integer.parseInt(num_s[0]);
                 if ( parsed_int < 0){
