@@ -76,6 +76,7 @@ public class StringCalculatorTest {
         StringCalculator calculator = new StringCalculator();
         Assertions.assertEquals(5, calculator.Add("//[***]\n1***2***2"));
     }
+
      @Test
     void multipleDelimitersProvided() {
         StringCalculator calculator = new StringCalculator();

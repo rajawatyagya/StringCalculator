@@ -17,7 +17,9 @@ public class StringCalculator {
             } else {
                 String[] delim_arr = number.split("\n", 2);
                 delim_arr[0] = delim_arr[0].replace("//","");
-                def_delimiter = delim_arr[0].replaceAll("\\[(.*?)\\]", "$1");
+                String[] multi_delim = delim_arr[0].split("]\\[");
+                def_delimiter = String.join("|", multi_delim);
+                def_delimiter = def_delimiter.replaceAll("\\[(.*?)\\]", "$1");
                 number = delim_arr[1];
             }
             String[] num_s;
