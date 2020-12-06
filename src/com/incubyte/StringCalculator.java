@@ -20,7 +20,7 @@ public class StringCalculator {
                 delim_arr[0] = delim_arr[0].replace("//","");
                 String[] multi_delim = delim_arr[0].split("]\\[");
                 def_delimiter = String.join("|", multi_delim);
-                def_delimiter = def_delimiter.replaceAll("\\[(.*?)\\]", "$1");
+                def_delimiter = def_delimiter.replaceAll("\\[(.*?)]", "$1");
                 def_delimiter = def_delimiter.replace("$", "n"); // $ is end on line in regex. Special case.
                 number = delim_arr[1];
                 number = number.replace("$", "n");
