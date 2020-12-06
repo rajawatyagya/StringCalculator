@@ -82,4 +82,10 @@ public class StringCalculatorTest {
         StringCalculator calculator = new StringCalculator();
         Assertions.assertEquals(6, calculator.Add("//[*][#]\n1*2#3"));
      }
+
+    @Test
+    void anyLengthMultipleDelimiter() {
+        StringCalculator calculator = new StringCalculator();
+        Assertions.assertEquals(8, calculator.Add("//[**][##][$$]\n1**2##3$$2"));
+    }
 }
